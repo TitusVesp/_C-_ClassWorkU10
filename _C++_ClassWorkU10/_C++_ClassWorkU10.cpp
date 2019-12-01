@@ -9,9 +9,9 @@ using namespace std;
 
 struct ScanInfo
 {
-	string model;
-	int price, optr, grey;
-	double x_size, y_size;
+	char model[20];
+	int price = 0, optr = 0, grey = 0;
+	double x_size = 0, y_size = 0;
 };
 
 void WriteFile(ScanInfo *x, int size)
@@ -41,6 +41,7 @@ void ChangeFile()
 		cin.ignore(32767, '\n');
 		cin >> quality;
 	}
+
 	ScanInfo buf[20];
 
 	for (int i = 0; i < quality; i++)
@@ -48,7 +49,11 @@ void ChangeFile()
 		cout << "Input model: " << endl;
 		temp[0] = '\0';
 		while (temp[0] == '\0') cin.getline(temp, 20);
-		int j = 0;  while (temp[j] != '\0') { buf[i].model[j] = temp[j++]; }
+		int j = 0;  
+		while (temp[j] != '\0') 
+		{ 
+			buf[i].model[j] = temp[j++]; 
+		}
 		cout << "Input price: " << endl;
 		cin >> buf[i].price;
 		if (cin.fail())
